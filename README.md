@@ -26,7 +26,8 @@ Using **XGBoost**, robust **walk-forward validation**, and **SHAP explainability
 
 ### 1. SHAP Summary Plot
 
-![SHAP Summary Plot]<img width="627" height="680" alt="image" src="https://github.com/user-attachments/assets/ece7032b-196b-4439-8c6c-4adce6a82901" />
+![SHAP Summary Plot]
+<img width="627" height="680" alt="image" src="https://github.com/user-attachments/assets/ece7032b-196b-4439-8c6c-4adce6a82901" />
 
 
 *This plot shows the SHAP interaction values, highlighting the impact of features on model output.*
@@ -64,6 +65,7 @@ Using **XGBoost**, robust **walk-forward validation**, and **SHAP explainability
 │ ├── shap_analysis.py # SHAP explainability and visualization
 ├── requirements.txt # Python dependencies
 ├── README.md # This documentation
+
 
 
 

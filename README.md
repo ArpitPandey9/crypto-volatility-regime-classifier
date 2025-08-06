@@ -26,7 +26,8 @@ Using **XGBoost**, robust **walk-forward validation**, and **SHAP explainability
 
 ### 1. SHAP Summary Plot
 
-"D:\S&P QUANT VS CODE\DAY 6 crypto-volatility-classifier\SHAP Summary Plot.png"
+![SHAP Summary Plot]<img width="627" height="680" alt="image" src="https://github.com/user-attachments/assets/ece7032b-196b-4439-8c6c-4adce6a82901" />
+
 
 *This plot shows the SHAP interaction values, highlighting the impact of features on model output.*
 
@@ -34,7 +35,8 @@ Using **XGBoost**, robust **walk-forward validation**, and **SHAP explainability
 
 ### 2. XGBoost Feature Importance
 
-"D:\S&P QUANT VS CODE\DAY 6 crypto-volatility-classifier\XGBoost Feature Importance Bar Chart.png"
+![XGBoost Feature Importance]<img width="820" height="455" alt="image" src="https://github.com/user-attachments/assets/3a6d7497-3508-4a47-8a20-d34e67de53e1" />
+
 
 *Bar chart showing the relative importance of the top 15 features used by the model.*
 
@@ -62,5 +64,6 @@ Using **XGBoost**, robust **walk-forward validation**, and **SHAP explainability
 │ ├── shap_analysis.py # SHAP explainability and visualization
 ├── requirements.txt # Python dependencies
 ├── README.md # This documentation
+
 
 

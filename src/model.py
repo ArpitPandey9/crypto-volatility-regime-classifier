@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report, accuracy_score
 import xgboost as xgb
-from features import prepare_features
+from src.features import prepare_features
 
 def walk_forward_cv(X, y, initial_train_size, step_size):
     n_samples = len(X)

@@ -1,36 +1,26 @@
-from ctypes import c_short
-import joblib
-import shap
+from __future__ import annotations
+
+from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
+import shap
 
-# Load model
-best_model = joblib.load("best_xgb_model.pkl")
 
-# Recreate or load the exact feature dataframe X_short you used during training
-# This is a placeholder — replace with your actual feature loading method
-# For example, re-run feature engineering and drop volatility_regime column
+def plot_shap_summary(model, features: pd.DataFrame, output_path: str | Path | None = None) -> None:
+    """Create a SHAP summary plot for an already-fitted tree model.
 
-# X_short = ...
+    The caller must supply the exact feature matrix used for the model.
+    This module intentionally performs no implicit model or data loading.
+    """
+    if features.empty:
+        raise ValueError("features must not be empty")
 
-# Flatten multiindex columns if present
-if isinstance(c_short.columns, pd.MultiIndex):
-    c_short.columns = ['_'.join(col).strip() for col in c_short.columns.values]
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(features)
+    shap.summary_plot(shap_values, features, show=output_path is None)
 
-c_short.columns = (
-    pd.Index(c_short.columns)
-      .str.replace('btc_', 'B_')
-      .str.replace('eth_', 'E_')
-      .str.replace('ltc_', 'L_')
-      .str.replace('bnb_', 'N_')
-      .str.replace('sol_', 'S_')
-)
-
-explainer = shap.TreeExplainer(best_model)
-shap_values = explainer.shap_values(c_short)
-
-plt.rcParams['ytick.labelsize'] = 8  # smaller font size to avoid overlap
-
-shap.summary_plot(shap_values, c_short, class_names=None)
-
-plt.show()
+    if output_path is not None:
+        path = Path(output_path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(path, bbox_inches="tight")
+        plt.close()
